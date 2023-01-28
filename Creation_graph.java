@@ -5,50 +5,21 @@ import java.util.Queue;
 import java.util.Scanner;
 public class Creation_graph {
 
-    public static ArrayList<Integer> BFS(int n,ArrayList<ArrayList<Integer>>adj){
-        //TEST_CASE
-//        9 9  no of nodes no of edges
-//        1 2
-//        1 6
-//        2 3
-//        2 4
-//        6 7
-//        6 9
-//        4 5
-//        7 8
-//        5 8
-
-        ArrayList<Integer>bfs=new ArrayList<>();
-        boolean visit[]=new boolean[n+1];
-        Queue<Integer>q=new LinkedList<>();
-        q.add(1);
-        visit[1]=true;
-        while(!q.isEmpty()){
-            int node=q.poll();
-            bfs.add(node);
-//            System.out.println(adj.get(node));
-            for (int e: adj.get(node)) {
-                if (!visit[e]){
-                    visit[e]=true;
-                    q.add(e);
-                }
-            }
-        }
-        return bfs;
-    }
-
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();//no of nodes.
-        int m=sc.nextInt();//no of edges.
-//        Test-Case
-//        5 6// no of nodes no of edges
+        //Test-Case
+//        first line of input : no of nodes   no of edges
+//        5 6
 //        1 2
 //        1 3
 //        2 4
 //        2 5
 //        3 4
 //        4 5
+
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();//no of nodes.
+        int m=sc.nextInt();//no of edges.
+
 
        // USING MATRIX---------
 //        int adj[][]=new int[n+1][n+1];
@@ -79,6 +50,6 @@ public class Creation_graph {
             adj.get(v).add(u);
         }
 
-        System.out.println(BFS(n,adj));
+        System.out.println(adj);
     }
 }
