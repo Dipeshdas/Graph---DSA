@@ -16,6 +16,17 @@ import java.util.Scanner;
 
 public class Detect_Cycle_UNDIRECTED_graph {
     public static void main(String[] args) {
+        //TEST CASE___________
+//        first line of input : no of vertices   no of edges
+//        7 7
+//        1 2
+//        1 3
+//        2 5
+//        3 4
+//        3 6
+//        5 7
+//        6 7
+       
         Scanner sc=new Scanner(System.in);
         int V=sc.nextInt();
         int E=sc.nextInt();
