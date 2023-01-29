@@ -59,8 +59,6 @@ class Solution {
     if(count==freshOrange){
             return ans;
         }
-        return -1;
-
-        
+        return -1;   
     }
 }
