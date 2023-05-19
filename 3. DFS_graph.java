@@ -42,7 +42,6 @@ public class DFS_graph {
             adj.get(u).add(v);
             adj.get(v).add(u);
         }
-
         ArrayList<Integer>dfs=new ArrayList<>();
         boolean[] visited =new boolean[n+1];
         DFS(1,dfs,adj,visited);
