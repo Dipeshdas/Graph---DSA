@@ -19,7 +19,6 @@ class Solution {
                 indegree[e]++;
             }
         }
-        
         for(int i=0;i<numCourses;i++){
             if(indegree[i]==0){
                 q.add(i);
