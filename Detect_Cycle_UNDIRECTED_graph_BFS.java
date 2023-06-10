@@ -12,7 +12,6 @@ import java.util.Scanner;
         this.parent=second;
     }
 }
-
 public class Detect_Cycle_UNDIRECTED_graph {
     public static void main(String[] args) {
         //TEST CASE___________
