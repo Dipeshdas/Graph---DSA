@@ -76,8 +76,7 @@ class Solution {
         dist[source[0]][source[1]]=0;
         
         Queue<Pair>q=new LinkedList<>();
-        q.add(new Pair(0,source[0],source[1]));
-        
+        q.add(new Pair(0,source[0],source[1]));   
         while(!q.isEmpty()){
             int dis=q.peek().first;
             int row=q.peek().second;
