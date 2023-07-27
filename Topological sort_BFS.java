@@ -95,3 +95,96 @@ class Solution
         
     }
 }
+
+//CODE STUDIO
+import java.util.*;
+
+public class Solution {
+
+    //TOPO SORT (BFS)-- KHAN'S ALGORITHM
+    public static List<Integer> topologicalSort(int[][] edges, int e, int v) {
+        ArrayList<ArrayList<Integer>>adj=new ArrayList<>();
+        for(int i=0;i<v;i++){
+            adj.add(new ArrayList<>());
+        }
+
+        for(int i=0;i<edges.length;i++){
+            int u=edges[i][0];
+            int l=edges[i][1];
+
+            adj.get(u).add(l);
+        }
+
+        int indegree[]=new int[v];
+        for(int i=0;i<v;i++){
+            for(int it:adj.get(i)){
+                indegree[it]++;
+            }
+        }
+
+        Queue<Integer>q=new LinkedList<>();
+        for(int i=0;i<v;i++){
+            if(indegree[i]==0){
+                q.add(i);
+            }
+        }
+        
+        List<Integer>ansTopoSort=new ArrayList<>();
+        while(!q.isEmpty()){
+            int node=q.poll();
+            ansTopoSort.add(node);
+
+            for(int adjNode:adj.get(node)){
+                indegree[adjNode]--;
+                if(indegree[adjNode]==0){
+                    q.add(adjNode);
+                }
+            }
+        }   
+        return ansTopoSort;
+
+    }
+
+    //TOPO SORT DFS--------------
+
+    // public static List<Integer> topologicalSort(int[][] edges, int e, int v) {
+    //     ArrayList<ArrayList<Integer>>adj=new ArrayList<>();
+    //     for(int i=0;i<v;i++){
+    //         adj.add(new ArrayList<>());
+    //     }
+
+    //     for(int i=0;i<edges.length;i++){
+    //         int u=edges[i][0];
+    //         int l=edges[i][1];
+
+    //         adj.get(u).add(l);
+    //     }
+
+    //     List<Integer>ansTopoSort=new ArrayList<>();
+    //     Stack<Integer>st=new Stack<>();
+    //     int visit[]=new int[v];
+
+    //     for(int i=0;i<v;i++){
+    //         if(visit[i]==0){
+    //             dfs(i,adj,visit,st);
+    //         }
+    //     }
+
+    //     while(!st.isEmpty()){
+    //         ansTopoSort.add(st.pop());
+    //     }
+    //     return ansTopoSort;
+
+    // }
+
+    // public static void dfs(int i,ArrayList<ArrayList<Integer>>adj,int visit[],Stack<Integer>st){
+    //     visit[i]=1;
+
+    //     for(int adjNode : adj.get(i)){
+    //         if(visit[adjNode]==0){
+    //             dfs(adjNode,adj,visit,st);
+    //         }
+    //     }
+    //     st.push(i);
+    // }
+}
