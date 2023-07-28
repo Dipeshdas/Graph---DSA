@@ -179,3 +179,83 @@ class Solution
     }
     
 }
+
+
+
+
+
+
+////CODE STUDIO
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+public class Solution {
+    public static char[] getAlienLanguage(int n, String[] dictionary) {
+        ArrayList<ArrayList<Integer>>adj=new ArrayList<>();
+        HashSet<Character>set=new HashSet<>();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<dictionary[i].length();j++){
+                set.add(dictionary[i].charAt(j));
+            }
+        }
+
+        int V=set.size();
+        
+        for(int i=0;i<V;i++){
+            adj.add(new ArrayList<>());
+        }
+        
+       for(int i=0;i<n-1;i++){
+           String s1=dictionary[i];
+           String s2=dictionary[i+1];
+           
+           int len=Math.min(s1.length(),s2.length());
+           for(int j=0;j<len;j++){
+               if(s1.charAt(j)!=s2.charAt(j)) {
+                   adj.get(s1.charAt(j)-'a').add(s2.charAt(j)-'a');
+                   break;
+               }
+           }
+       }
+        ArrayList<Integer> topo=bfsTopo(V,adj);
+        String ans="";
+        for(int e: topo){
+            ans=ans+(char)(e+(int)('a'));
+        }
+        return ans.toCharArray();
+    }
+
+    public static ArrayList<Integer> bfsTopo(int n,ArrayList<ArrayList<Integer>>adj){
+        int []indegree=new int[n];
+        
+        for(int i=0;i<n;i++){
+            for(int e:adj.get(i)){
+                indegree[e]++;
+            }
+        }
+        
+        Queue<Integer>q=new LinkedList<>();
+        for(int i=0;i<n;i++){
+            if(indegree[i]==0){
+                q.add(i);
+            }
+        }
+        
+        ArrayList<Integer>topo=new ArrayList<>();
+        
+        while(!q.isEmpty()){
+            int node=q.peek();
+            q.remove();
+            topo.add(node);
+            
+            for(int e:adj.get(node)){
+                indegree[e]--;
+                if(indegree[e]==0) q.add(e);
+            }
+        }
+        return topo;
+    }
+}
+
