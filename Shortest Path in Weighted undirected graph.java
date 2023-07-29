@@ -41,7 +41,6 @@ class Pair{
     }
 }
 
-
 class Solution {
     public static List<Integer> shortestPath(int n, int m, int edges[][]) {
         ArrayList<ArrayList<Pair>>adj=new ArrayList<>();
